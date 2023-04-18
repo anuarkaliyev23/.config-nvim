@@ -30,6 +30,7 @@ require 'config.nvim-lightbulb'
 require 'config.toggleterm'
 require 'config.leap'
 require 'config.dap-ui'
+require 'config.highlights'
 
 -- remaps
 require 'remaps.leader'
