@@ -154,15 +154,15 @@ return require('packer').startup(function(use)
 	use 'junegunn/vim-easy-align'
 	--
 	use {
-	  'nvim-neotest/neotest',
-	  requires = {
-		'nvim-lua/plenary.nvim',
-		'nvim-treesitter/nvim-treesitter',
-		'antoinemadec/FixCursorHold.nvim',
-		'nvim-neotest/neotest-plenary',
-		'nvim-neotest/neotest-python',
-		'nvim-neotest/neotest-go'
-	  }
+		'nvim-neotest/neotest',
+		requires = {
+			'nvim-lua/plenary.nvim',
+			'nvim-treesitter/nvim-treesitter',
+			'antoinemadec/FixCursorHold.nvim',
+			'nvim-neotest/neotest-plenary',
+			'nvim-neotest/neotest-python',
+			'nvim-neotest/neotest-go'
+		}
 	}
 	--
 	use {
@@ -211,4 +211,7 @@ return require('packer').startup(function(use)
 	-- go support
 	-- use 'fatih/vim-go'
 	use 'leoluz/nvim-dap-go'
+
+	-- d2 support 
+	use 'terrastruct/d2-vim'
 end)
