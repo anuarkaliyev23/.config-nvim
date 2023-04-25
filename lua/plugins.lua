@@ -202,7 +202,6 @@ return require('packer').startup(function(use)
 	}
 	--
 	use 'mikelue/vim-maven-plugin'
-	use {"akinsho/toggleterm.nvim", tag = '*'}
 	use 'ggandor/leap.nvim'
 	--
 	use 'simrat39/rust-tools.nvim'
@@ -214,4 +213,5 @@ return require('packer').startup(function(use)
 
 	-- d2 support 
 	use 'terrastruct/d2-vim'
+
 end)
