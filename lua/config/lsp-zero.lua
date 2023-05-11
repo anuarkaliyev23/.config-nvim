@@ -11,6 +11,8 @@ lsp.ensure_installed({
 	'dockerls',
 	'yamlls',
 	'pyright',
+	'pylsp',
+	'jedi_language_server',
 	'lemminx',
 	'gopls',
 })
@@ -19,3 +21,24 @@ lsp.nvim_workspace()
 
 lsp.setup()
 
+local lspconfig = require('lspconfig')
+lspconfig.pylsp.setup{
+	settings = {
+		pylsp = {
+			plugins = {
+				jedi_completion = {
+					enabled = true,
+					include_class_objects = true,
+					include_function_objects = true,
+					fuzzy = true,
+				},
+				rope_autoimport = {
+					enabled = true,
+				},
+				rope_completion = {
+					enabled = true,
+				}
+			}
+		}
+	}
+}
