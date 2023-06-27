@@ -214,4 +214,6 @@ return require('packer').startup(function(use)
 	-- d2 support 
 	use 'terrastruct/d2-vim'
 
+	use 'anuvyklack/pretty-fold.nvim'
+
 end)
