@@ -25,4 +25,6 @@ vim.keymap.set("n", "<leader>ta", function ()
 	neotest.run.attach()
 end)
 
-
+vim.keymap.set("n", "<leader>tp", function ()
+	neotest.output_panel.toggle()
+end)
