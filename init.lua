@@ -31,6 +31,7 @@ require 'config.leap'
 require 'config.dap-ui'
 require 'config.highlights'
 require 'config.pretty-fold'
+require 'config.rest'
 
 -- remaps
 require 'remaps.leader'
@@ -51,4 +52,5 @@ require 'remaps.personal'
 require 'remaps.neotest'
 require 'remaps.vim-easy-align'
 require 'remaps.nvim-code-action-menu'
+require 'remaps.rest'
 --

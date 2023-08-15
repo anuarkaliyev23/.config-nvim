@@ -216,4 +216,9 @@ return require('packer').startup(function(use)
 
 	use 'anuvyklack/pretty-fold.nvim'
 
+	--.http file support
+	use {
+		"rest-nvim/rest.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+	}
 end)
