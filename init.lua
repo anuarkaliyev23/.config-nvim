@@ -32,6 +32,7 @@ require 'config.dap-ui'
 require 'config.highlights'
 require 'config.pretty-fold'
 require 'config.rest'
+require 'config.telekasten'
 
 -- remaps
 require 'remaps.leader'
@@ -53,4 +54,5 @@ require 'remaps.neotest'
 require 'remaps.vim-easy-align'
 require 'remaps.nvim-code-action-menu'
 require 'remaps.rest'
+require 'remaps.telekasten'
 --

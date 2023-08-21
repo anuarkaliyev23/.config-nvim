@@ -96,6 +96,31 @@ return require('packer').startup(function(use)
 			'nvim-telescope/telescope-ui-select.nvim' 
 		}
 	}
+
+	use {
+
+		'nvim-telescope/telescope-media-files.nvim',
+		requires = {
+			'nvim-lua/popup.nvim',
+			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope.nvim'
+		}
+	}
+
+	use {
+		'nvim-telescope/telescope-symbols.nvim',
+		requires = {
+			'nvim-telescope/telescope.nvim'
+		}
+	}
+
+	use {
+		'renerocksai/telekasten.nvim',
+		requires = {
+			'nvim-telescope/telescope.nvim',
+			'renerocksai/calendar-vim'
+		}
+	}
 	--
 	-- treesitter
 	use 'nvim-treesitter/nvim-treesitter'
