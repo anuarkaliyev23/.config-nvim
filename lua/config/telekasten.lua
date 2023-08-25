@@ -36,9 +36,4 @@ require('telekasten').setup({
 	plug_into_calendar = true,
 	command_palette_theme = 'dropdown',
 
-	vault = {
-		personal = {
-			home = home .. '/' .. 'vaults' .. '/' .. 'personal'
-		}
-	}
 })
