@@ -64,8 +64,6 @@ return require('packer').startup(function(use)
 	use 'EdenEast/nightfox.nvim'
 	-- tokyonight theme
 	use 'folke/tokyonight.nvim'
-	-- lazygit
-	use 'kdheepak/lazygit.nvim'
 	-- fugitive
 	use 'tpope/vim-fugitive'
 	--
