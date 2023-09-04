@@ -66,6 +66,8 @@ return require('packer').startup(function(use)
 	use 'folke/tokyonight.nvim'
 	-- lazygit
 	use 'kdheepak/lazygit.nvim'
+	-- fugitive
+	use 'tpope/vim-fugitive'
 	--
 	-- git-messenger 
 	-- show git message in hover window
@@ -246,4 +248,5 @@ return require('packer').startup(function(use)
 		"rest-nvim/rest.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
 	}
+
 end)
