@@ -1,9 +1,4 @@
 local home = vim.fn.expand("~/zettelkasten")
-local daily = home .. '/' .. 'daily'
-local weeklies = home .. '/' .. 'weekly'
-local templates = home .. '/' .. 'templates'
-
-local template_daily = templates .. '/' .. 'daily'
 
 
 require('telekasten').setup({
@@ -11,12 +6,11 @@ require('telekasten').setup({
 	take_over_my_home = true,
 	auto_set_filetype = true,
 
-	dailies = daily,
-	weeklies = weeklies,
-	templates = templates,
-
 	img_subdir = 'img',
 	extension = '.md',
+
+	new_note_filename = "uuid",
+	uuid_type = "rand",
 
 	follow_creates_nonexisting = true,
 	dailies_create_nonexisting = true,
@@ -29,9 +23,6 @@ require('telekasten').setup({
 
 	template_handling = "smart",
 	new_note_location = "smart",
-
-
-	template_new_daily = template_daily,
 
 	plug_into_calendar = true,
 	command_palette_theme = 'dropdown',
