@@ -1,10 +1,13 @@
 local home = vim.fn.expand("~/zettelkasten")
-
+local template_folder = home .. '/' .. 'templates'
 
 require('telekasten').setup({
 	home = home,
+	templates = template_folder,
+
 	take_over_my_home = true,
 	auto_set_filetype = true,
+
 
 	img_subdir = 'img',
 	extension = '.md',
