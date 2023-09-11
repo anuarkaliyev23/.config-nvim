@@ -12,9 +12,6 @@ require('telekasten').setup({
 	img_subdir = 'img',
 	extension = '.md',
 
-	new_note_filename = "uuid",
-	uuid_type = "rand",
-
 	follow_creates_nonexisting = true,
 	dailies_create_nonexisting = true,
 	weeklies_create_nonexisting = true,
