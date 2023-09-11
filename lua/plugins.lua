@@ -247,4 +247,7 @@ return require('packer').startup(function(use)
 		requires = { "nvim-lua/plenary.nvim" },
 	}
 
+	-- Stop switching to English to move
+	use 'ivanesmantovich/xkbswitch.nvim'
+
 end)

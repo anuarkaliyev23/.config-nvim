@@ -33,6 +33,7 @@ require 'config.highlights'
 require 'config.pretty-fold'
 require 'config.rest'
 require 'config.telekasten'
+require 'config.xksbswitch'
 
 -- remaps
 require 'remaps.leader'
