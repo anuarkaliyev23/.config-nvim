@@ -34,7 +34,7 @@ require 'config.pretty-fold'
 require 'config.rest'
 require 'config.telekasten'
 require 'config.xksbswitch'
-
+require 'config.git-conflict'
 -- remaps
 require 'remaps.leader'
 require 'remaps.neotree'
@@ -55,4 +55,5 @@ require 'remaps.vim-easy-align'
 require 'remaps.nvim-code-action-menu'
 require 'remaps.rest'
 require 'remaps.telekasten'
---
+require 'remaps.git-conflict'
+

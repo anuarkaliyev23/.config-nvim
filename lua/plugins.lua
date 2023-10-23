@@ -250,4 +250,5 @@ return require('packer').startup(function(use)
 	-- Stop switching to English to move
 	use 'ivanesmantovich/xkbswitch.nvim'
 
+	use {'akinsho/git-conflict.nvim', tag = "*"}
 end)

@@ -10,7 +10,7 @@ require("catppuccin").setup({
     dim_inactive = {
         enabled = false,
         shade = "dark",
-        percentage = 0.15,
+        percentage = 0.05,
     },
     no_italic = false, -- Force no italic
     no_bold = false, -- Force no bold
@@ -33,12 +33,21 @@ require("catppuccin").setup({
     integrations = {
         cmp = true,
         nvimtree = true,
-        telescope = true,
-	harpoon = true,
-	mason = true,
-	neotree = true,
-	which_key = true,
-	lsp_trouble = true,
+		telescope = {
+			enabled = true,
+		},
+		harpoon = true,
+		mason = true,
+		neotree = true,
+		which_key = true,
+		lsp_trouble = true,
+		leap = true,
+		dap = {
+			enabled = true,
+			enable_ui = true,
+		},
+		treesitter = true,
+		telekasten = true,
 	-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 	},
 })

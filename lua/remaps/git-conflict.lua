@@ -1,0 +1,6 @@
+vim.keymap.set('n', 'gco', '<Plug>(git-conflict-ours)')
+vim.keymap.set('n', 'gct', '<Plug>(git-conflict-theirs)')
+vim.keymap.set('n', 'gcb', '<Plug>(git-conflict-both)')
+vim.keymap.set('n', 'gc0', '<Plug>(git-conflict-none)')
+vim.keymap.set('n', ']x', '<Plug>(git-conflict-prev-conflict)')
+vim.keymap.set('n', '[x', '<Plug>(git-conflict-next-conflict)')
