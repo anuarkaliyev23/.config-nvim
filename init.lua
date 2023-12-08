@@ -35,6 +35,7 @@ require 'config.rest'
 require 'config.telekasten'
 require 'config.xksbswitch'
 require 'config.git-conflict'
+require 'config.harpoon'
 -- remaps
 require 'remaps.leader'
 require 'remaps.neotree'

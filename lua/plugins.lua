@@ -145,7 +145,8 @@ return require('packer').startup(function(use)
 	-- harpoon used to mark and switch between files (bookmarks)
 	use {
 		'ThePrimeagen/harpoon',
-		requres = 'nvim-lua/plenary.nvim'
+		branch="harpoon2",
+		requres = 'nvim-lua/plenary.nvim',
 	}
 	--
 	-- undotree showing you all recent changes history in a file in a tree-like manner
