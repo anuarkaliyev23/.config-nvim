@@ -252,4 +252,6 @@ return require('packer').startup(function(use)
 	use 'ivanesmantovich/xkbswitch.nvim'
 
 	use {'akinsho/git-conflict.nvim', tag = "*"}
+
+	use {'tweekmonster/helpful.vim'}
 end)
