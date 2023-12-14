@@ -254,4 +254,6 @@ return require('packer').startup(function(use)
 	use {'akinsho/git-conflict.nvim', tag = "*"}
 
 	use {'tweekmonster/helpful.vim'}
+
+	use "anuarkaliyev23/randomness"
 end)

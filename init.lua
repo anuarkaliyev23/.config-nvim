@@ -36,6 +36,7 @@ require 'config.telekasten'
 require 'config.xksbswitch'
 require 'config.git-conflict'
 require 'config.harpoon'
+require 'config.randomness'
 -- remaps
 require 'remaps.leader'
 require 'remaps.neotree'
@@ -57,4 +58,4 @@ require 'remaps.nvim-code-action-menu'
 require 'remaps.rest'
 require 'remaps.telekasten'
 require 'remaps.git-conflict'
-
+require 'remaps.randomness'
