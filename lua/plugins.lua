@@ -46,8 +46,6 @@ return require('packer').startup(function(use)
 			{ 'nvim-telescope/telescope.nvim' },
 		},
 	}
-	-- interactive scrollbar
-	use 'dstein64/nvim-scrollview'
 	--
 	-- neotree
 	use {
@@ -126,6 +124,12 @@ return require('packer').startup(function(use)
 	use 'nvim-treesitter/nvim-treesitter'
 	use 'nvim-treesitter/playground'
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
+	use {
+		'HiPhish/nvim-ts-rainbow2',
+		requires = {
+			'nvim-treesitter/nvim-treesitter'
+		}
+	}
 	--
 	-- convenient search result hopping 
 	use 'kevinhwang91/nvim-hlslens'
