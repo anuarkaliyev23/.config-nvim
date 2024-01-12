@@ -31,3 +31,11 @@ end)
 vim.keymap.set("n", "<leader>hr", function()
 	harpoon:list():select(4)
 end)
+
+vim.keymap.set("n", "<leader>hj", function()
+	harpoon:list():next()
+end)
+
+vim.keymap.set("n", "<leader>hk", function()
+	harpoon:list():prev()
+end)

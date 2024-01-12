@@ -35,7 +35,6 @@ return require('packer').startup(function(use)
 			'rcarriga/nvim-dap-ui',
 		}
 	}
-	use 'HiPhish/debugpy.nvim'
 
 	--YAML support
 	use {
@@ -58,19 +57,12 @@ return require('packer').startup(function(use)
 		}
 	}
 	--
-	-- nightfox theme
-	use 'EdenEast/nightfox.nvim'
-	-- tokyonight theme
-	use 'folke/tokyonight.nvim'
 	-- fugitive
 	use 'tpope/vim-fugitive'
 	--
 	-- git-messenger 
 	-- show git message in hover window
 	use 'rhysd/git-messenger.vim'
-	--
-	-- gitsigns
-	use 'lewis6991/gitsigns.nvim'
 	--
 	-- catpucin theme
 	use { 'catppuccin/nvim', as = 'catppuccin' }
@@ -89,21 +81,12 @@ return require('packer').startup(function(use)
 	use {
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.0',
-		requires = { 
-			'nvim-lua/plenary.nvim', 
+		requires = {
+			'nvim-lua/plenary.nvim',
 			'nvim-telescope/telescope-ui-select.nvim' 
 		}
 	}
 
-	use {
-
-		'nvim-telescope/telescope-media-files.nvim',
-		requires = {
-			'nvim-lua/popup.nvim',
-			'nvim-lua/plenary.nvim',
-			'nvim-telescope/telescope.nvim'
-		}
-	}
 
 	use {
 		'nvim-telescope/telescope-symbols.nvim',
@@ -112,13 +95,6 @@ return require('packer').startup(function(use)
 		}
 	}
 
-	use {
-		'renerocksai/telekasten.nvim',
-		requires = {
-			'nvim-telescope/telescope.nvim',
-			'renerocksai/calendar-vim'
-		}
-	}
 	--
 	-- treesitter
 	use 'nvim-treesitter/nvim-treesitter'
@@ -133,13 +109,7 @@ return require('packer').startup(function(use)
 	--
 	-- convenient search result hopping 
 	use 'kevinhwang91/nvim-hlslens'
-	--
-	-- show keybindings on command typing
-	use 'folke/which-key.nvim'
-	--
-	-- game by ThePrimeagen for vim training
-	use 'ThePrimeagen/vim-be-good'
-	--
+
 	-- Lua
 	use {
 		'folke/trouble.nvim',
@@ -153,10 +123,7 @@ return require('packer').startup(function(use)
 		requres = 'nvim-lua/plenary.nvim',
 	}
 	--
-	-- undotree showing you all recent changes history in a file in a tree-like manner
-	use 'mbbill/undotree'
-	--
-	--
+
 	--windows min/max with animation
 	use {
 		'anuvyklack/windows.nvim',
@@ -176,10 +143,7 @@ return require('packer').startup(function(use)
 	--
 	-- move blocks vertically
 	use 'fedepujol/move.nvim'
-	--
-	-- blame on lines
-	use 'tveskag/nvim-blame-line'
-	--
+
 	-- align markdown table
 	use 'junegunn/vim-easy-align'
 	--
@@ -201,8 +165,10 @@ return require('packer').startup(function(use)
 			'mfussenegger/nvim-dap'
 		}
 	}
+
 	-- LSP support for vim configs
 	use "folke/neodev.nvim"
+
 	-- comment lines/blocks
 	use 'numToStr/Comment.nvim'
 	--
@@ -220,11 +186,7 @@ return require('packer').startup(function(use)
 	}
 	--
 	use 'chaoren/vim-wordmotion';
-	--
-	use {
-		'kosayoda/nvim-lightbulb',
-		requires = 'antoinemadec/FixCursorHold.nvim',
-	}
+
 	--
 	use {
 		'weilbith/nvim-code-action-menu',
@@ -243,8 +205,6 @@ return require('packer').startup(function(use)
 
 	-- d2 support 
 	use 'terrastruct/d2-vim'
-
-	use 'anuvyklack/pretty-fold.nvim'
 
 	--.http file support
 	use {
