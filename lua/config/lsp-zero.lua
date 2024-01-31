@@ -22,22 +22,37 @@ lsp.nvim_workspace()
 lsp.setup()
 
 local lspconfig = require('lspconfig')
-lspconfig.pylsp.setup{
+
+lspconfig.lua_ls.setup{
 	settings = {
-		pylsp = {
-			plugins = {
-				jedi_completion = {
-					enabled = true,
-					include_class_objects = true,
-					include_function_objects = true,
-					fuzzy = true,
+		Lua = {
+			diagnostics = {
+				globals = { 'vim', 'hs' }
+			},
+			workspace = {
+				library = {
+					['/Applications/Hammerspoon.app/Contents/Resources/extensions/hs'] = true,
+					['/Users/dusaliyev/.hammerspoon/Spoons/EmmyLua.spoon/annotations'] = true,
 				},
-				rope_autoimport = {
-					enabled = true,
-				},
-				rope_completion = {
-					enabled = true,
-				}
+			},
+		},
+	}
+}
+
+lspconfig.pylsp.setup{
+	pylsp = {
+		plugins = {
+			jedi_completion = {
+				enabled = true,
+				include_class_objects = true,
+				include_function_objects = true,
+				fuzzy = true,
+			},
+			rope_autoimport = {
+				enabled = true,
+			},
+			rope_completion = {
+				enabled = true,
 			}
 		}
 	}
