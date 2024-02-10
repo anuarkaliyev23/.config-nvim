@@ -83,7 +83,7 @@ return require('packer').startup(function(use)
 		tag = '0.1.0',
 		requires = {
 			'nvim-lua/plenary.nvim',
-			'nvim-telescope/telescope-ui-select.nvim' 
+			'nvim-telescope/telescope-ui-select.nvim'
 		}
 	}
 
@@ -166,6 +166,8 @@ return require('packer').startup(function(use)
 		}
 	}
 
+	use 'leoluz/nvim-dap-go'
+
 	-- LSP support for vim configs
 	use "folke/neodev.nvim"
 
@@ -199,10 +201,6 @@ return require('packer').startup(function(use)
 	use 'simrat39/rust-tools.nvim'
 	use 'tree-sitter/tree-sitter-rust'
 	--
-	-- go support
-	-- use 'fatih/vim-go'
-	use 'leoluz/nvim-dap-go'
-
 	-- d2 support 
 	use 'terrastruct/d2-vim'
 

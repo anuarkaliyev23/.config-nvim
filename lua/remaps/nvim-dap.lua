@@ -1,4 +1,5 @@
 local dap = require("dap")
+local dap_go = require("dap-go")
 
 -- breakpoint
 vim.keymap.set("n", '<leader>b', function ()
@@ -29,4 +30,8 @@ end)
 -- debug run
 vim.keymap.set("n", '<leander>dr', function ()
 	dap.repl.open()
+end)
+
+vim.keymap.set("n", "<leader>gtd", function ()
+	dap_go.debug_test()
 end)

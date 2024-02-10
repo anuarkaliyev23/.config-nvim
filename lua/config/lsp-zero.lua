@@ -34,6 +34,7 @@ lspconfig.lua_ls.setup{
 					['/Applications/Hammerspoon.app/Contents/Resources/extensions/hs'] = true,
 					['/Users/dusaliyev/.hammerspoon/Spoons/EmmyLua.spoon/annotations'] = true,
 				},
+				checkThirdParty = false,
 			},
 		},
 	}
