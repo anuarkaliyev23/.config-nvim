@@ -33,6 +33,7 @@ require 'config.git-conflict'
 require 'config.harpoon'
 require 'config.randomness'
 require 'config.nvim-ts-rainbow2'
+require 'config.move'
 -- remaps
 require 'remaps.leader'
 require 'remaps.neotree'
