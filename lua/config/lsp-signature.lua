@@ -1,3 +1,5 @@
+local lsp_signature = require("lsp_signature")
+
 cfg = {
   debug = false, -- set to true to enable debug logging
   log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log", -- log dir when debug is on
@@ -55,5 +57,5 @@ cfg = {
 }
 
 -- recommended:
-require'lsp_signature'.setup(cfg) -- no need to specify bufnr if you don't use toggle_key
+lsp_signature.setup(cfg) -- no need to specify bufnr if you don't use toggle_key
 
