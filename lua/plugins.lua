@@ -80,11 +80,12 @@ return require('packer').startup(function(use)
 	-- telescope -- fuzzy finder
 	use {
 		'nvim-telescope/telescope.nvim',
-		tag = '0.1.0',
+		tag = '0.1.4',
 		requires = {
 			'nvim-lua/plenary.nvim',
 			'nvim-telescope/telescope-ui-select.nvim'
-		}
+		},
+		run="make"
 	}
 
 
@@ -155,7 +156,8 @@ return require('packer').startup(function(use)
 			'antoinemadec/FixCursorHold.nvim',
 			'nvim-neotest/neotest-plenary',
 			'nvim-neotest/neotest-python',
-			'nvim-neotest/neotest-go'
+			'nvim-neotest/neotest-go',
+			'nvim-neotest/nvim-nio'
 		}
 	}
 	--
@@ -182,11 +184,6 @@ return require('packer').startup(function(use)
 		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
 	}
 	--
-	use {
-		"narutoxy/dim.lua",
-		requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
-	}
-	--
 	use 'chaoren/vim-wordmotion';
 
 	--
@@ -205,10 +202,11 @@ return require('packer').startup(function(use)
 	use 'terrastruct/d2-vim'
 
 	--.http file support
-	use {
-		"rest-nvim/rest.nvim",
-		requires = { "nvim-lua/plenary.nvim" },
-	}
+	-- use {
+	-- 	"rest-nvim/rest.nvim",
+	-- 	rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" },
+	-- 	requires = { "nvim-lua/plenary.nvim" },
+	-- }
 
 	-- Stop switching to English to move
 	use 'ivanesmantovich/xkbswitch.nvim'
@@ -218,5 +216,6 @@ return require('packer').startup(function(use)
 	use {'tweekmonster/helpful.vim'}
 
 	use "anuarkaliyev23/randomness"
+
 end)
 
