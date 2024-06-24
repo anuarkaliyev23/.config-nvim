@@ -36,6 +36,7 @@ return require('packer').startup(function(use)
 		}
 	}
 
+	use 'nvim-tree/nvim-web-devicons'
 	--YAML support
 	use {
 		'someone-stole-my-name/yaml-companion.nvim',
@@ -45,6 +46,7 @@ return require('packer').startup(function(use)
 			{ 'nvim-telescope/telescope.nvim' },
 		},
 	}
+
 	--
 	-- neotree
 	use {
