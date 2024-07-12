@@ -15,7 +15,6 @@ lsp.ensure_installed({
 	'jedi_language_server',
 	'lemminx',
 	'gopls',
-	'hls',
 })
 -- Configure lua language server for neovim
 lsp.nvim_workspace()

@@ -200,14 +200,7 @@ return require('packer').startup(function(use)
 	-- d2 support 
 	use 'terrastruct/d2-vim'
 
-	--.http file support
-	-- use {
-	-- 	"rest-nvim/rest.nvim",
-	-- 	rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" },
-	-- 	requires = { "nvim-lua/plenary.nvim" },
-	-- }
-
-	-- Stop switching to English to move
+		-- Stop switching to English to move
 	use 'ivanesmantovich/xkbswitch.nvim'
 
 	use {'akinsho/git-conflict.nvim', tag = "*"}
@@ -216,5 +209,9 @@ return require('packer').startup(function(use)
 
 	use "anuarkaliyev23/randomness"
 
-end)
+	use {
+		'mrcjkb/haskell-tools.nvim',
+		version = '^3', -- Recommended
+	}
+	end)
 
