@@ -69,9 +69,6 @@ return require('packer').startup(function(use)
 	-- catpucin theme
 	use { 'catppuccin/nvim', as = 'catppuccin' }
 	--
-	-- icons
-	use 'nvim-tree/nvim-web-devicons'
-	--
 	-- status bar
 	use({
 		'NTBBloodbath/galaxyline.nvim',
