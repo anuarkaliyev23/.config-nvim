@@ -213,5 +213,10 @@ return require('packer').startup(function(use)
 		'mrcjkb/haskell-tools.nvim',
 		version = '^3', -- Recommended
 	}
-	end)
+
+	use 'braxtons12/blame_line.nvim'
+
+
+end)
+
 
