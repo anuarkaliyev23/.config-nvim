@@ -5,25 +5,15 @@ return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 
-	-- LSP Zero
-	use {
-		'VonHeikemen/lsp-zero.nvim',
+	-- LSP
+	use "neovim/nvim-lspconfig"
+	use {"hrsh7th/nvim-cmp",
 		requires = {
-			-- LSP Support
-			{'neovim/nvim-lspconfig'},
-			{'williamboman/mason.nvim'},
-			{'williamboman/mason-lspconfig.nvim'},
-			-- Autocompletion
-			{'hrsh7th/nvim-cmp'},
-			{'hrsh7th/cmp-buffer'},
-			{'hrsh7th/cmp-path'},
-			{'saadparwaiz1/cmp_luasnip'},
-			{'hrsh7th/cmp-nvim-lsp'},
-			{'hrsh7th/cmp-nvim-lua'},
-
-			--Snippets
-			{'L3MON4D3/LuaSnip'},
-			{'rafamadriz/friendly-snippets'},
+			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ 'hrsh7th/cmp-buffer' },
+			{ 'hrsh7th/cmp-path' },
+			{ 'hrsh7th/cmp-cmdline' },
+			{ 'hrsh7th/nvim-cmp' },
 		}
 	}
 
@@ -36,7 +26,6 @@ return require('packer').startup(function(use)
 		}
 	}
 
-	use 'nvim-tree/nvim-web-devicons'
 	--YAML support
 	use {
 		'someone-stole-my-name/yaml-companion.nvim',
@@ -47,11 +36,11 @@ return require('packer').startup(function(use)
 		},
 	}
 
-	--
+
 	-- neotree
 	use {
 		'nvim-neo-tree/neo-tree.nvim',
-		branch = 'v2.x',
+		branch = 'v3.x',
 		requires = {
 			'nvim-lua/plenary.nvim',
 			'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
@@ -62,10 +51,7 @@ return require('packer').startup(function(use)
 	-- fugitive
 	use 'tpope/vim-fugitive'
 	--
-	-- git-messenger 
-	-- show git message in hover window
-	use 'rhysd/git-messenger.vim'
-	--
+
 	-- catpucin theme
 	use { 'catppuccin/nvim', as = 'catppuccin' }
 	--
@@ -75,24 +61,17 @@ return require('packer').startup(function(use)
 		-- some optional icons
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 	})
-	--
+
 	-- telescope -- fuzzy finder
 	use {
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.4',
 		requires = {
 			'nvim-lua/plenary.nvim',
-			'nvim-telescope/telescope-ui-select.nvim'
+			'nvim-telescope/telescope-ui-select.nvim',
+			'nvim-telescope/telescope-symbols.nvim',
 		},
 		run="make"
-	}
-
-
-	use {
-		'nvim-telescope/telescope-symbols.nvim',
-		requires = {
-			'nvim-telescope/telescope.nvim'
-		}
 	}
 
 	--
@@ -100,6 +79,8 @@ return require('packer').startup(function(use)
 	use 'nvim-treesitter/nvim-treesitter'
 	use 'nvim-treesitter/playground'
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
+
+	-- TODO use https://gitlab.com/HiPhish/rainbow-delimiters.nvim instead
 	use {
 		'HiPhish/nvim-ts-rainbow2',
 		requires = {
@@ -111,11 +92,7 @@ return require('packer').startup(function(use)
 	use 'kevinhwang91/nvim-hlslens'
 
 	-- Lua
-	use {
-		'folke/trouble.nvim',
-		requires = 'kyazdani42/nvim-web-devicons',
-	}
-	--
+
 	-- harpoon used to mark and switch between files (bookmarks)
 	use {
 		'ThePrimeagen/harpoon',
@@ -132,12 +109,7 @@ return require('packer').startup(function(use)
 			'anuvyklack/animation.nvim'
 		},
 	}
-	--
-	use {
-		'salkin-mada/openscad.nvim',
-		requires = 'L3MON4D3/LuaSnip'
-	}
-	--
+
 	-- show function signature as you type
 	use 'ray-x/lsp_signature.nvim'
 	--
@@ -146,6 +118,7 @@ return require('packer').startup(function(use)
 
 	-- align markdown table
 	use 'junegunn/vim-easy-align'
+
 	--
 	use {
 		'nvim-neotest/neotest',
@@ -159,7 +132,7 @@ return require('packer').startup(function(use)
 			'nvim-neotest/nvim-nio'
 		}
 	}
-	--
+
 	use {
 		'mfussenegger/nvim-dap-python',
 		requires = {
@@ -174,15 +147,11 @@ return require('packer').startup(function(use)
 
 	-- comment lines/blocks
 	use 'numToStr/Comment.nvim'
-	--
+
 	-- java support
 	use 'mfussenegger/nvim-jdtls'
 	--
-	use {
-		"kylechui/nvim-surround",
-		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-	}
-	--
+
 	use 'chaoren/vim-wordmotion';
 
 	--
@@ -194,25 +163,10 @@ return require('packer').startup(function(use)
 	use 'mikelue/vim-maven-plugin'
 	use 'ggandor/leap.nvim'
 	--
-	use 'simrat39/rust-tools.nvim'
-	use 'tree-sitter/tree-sitter-rust'
-	--
-	-- d2 support 
-	use 'terrastruct/d2-vim'
-
 		-- Stop switching to English to move
 	use 'ivanesmantovich/xkbswitch.nvim'
 
 	use {'akinsho/git-conflict.nvim', tag = "*"}
-
-	use {'tweekmonster/helpful.vim'}
-
-	use "anuarkaliyev23/randomness"
-
-	use {
-		'mrcjkb/haskell-tools.nvim',
-		version = '^3', -- Recommended
-	}
 
 	use 'braxtons12/blame_line.nvim'
 

@@ -6,10 +6,10 @@ ts_update()
 -- config
 require'nvim-treesitter.configs'.setup {
 	-- A list of parser names, or "all"
-	ensure_installed = { 
+	ensure_installed = {
 		"bash",
-		"c", 
-		"lua", 
+		"c",
+		"lua",
 		"rust",
 		"cmake",
 		"dockerfile",
