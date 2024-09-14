@@ -170,7 +170,6 @@ return require('packer').startup(function(use)
 
 	use 'braxtons12/blame_line.nvim'
 
-
 end)
 
 

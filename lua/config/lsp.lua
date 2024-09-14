@@ -12,7 +12,8 @@ local enabled_servers = {
 	"pyright",
 	"dockerls",
 	"yamlls",
-	"sqlls"
+	"sqlls",
+	"jedi_language_server"
 }
 -- LSP configuration
 
