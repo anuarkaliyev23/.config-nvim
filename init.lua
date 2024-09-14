@@ -27,7 +27,7 @@ require 'config.highlights'
 require 'config.xksbswitch'
 require 'config.git-conflict'
 require 'config.harpoon'
-require 'config.nvim-ts-rainbow2'
+-- require 'config.nvim-ts-rainbow2'
 require 'config.move'
 require 'config.blame-line'
 -- remaps

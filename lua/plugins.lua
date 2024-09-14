@@ -79,14 +79,14 @@ return require('packer').startup(function(use)
 	use 'nvim-treesitter/nvim-treesitter'
 	use 'nvim-treesitter/playground'
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
-
-	-- TODO use https://gitlab.com/HiPhish/rainbow-delimiters.nvim instead
-	use {
-		'HiPhish/nvim-ts-rainbow2',
-		requires = {
-			'nvim-treesitter/nvim-treesitter'
-		}
-	}
+	--
+	-- -- TODO use https://gitlab.com/HiPhish/rainbow-delimiters.nvim instead
+	-- use {
+	-- 	'HiPhish/nvim-ts-rainbow2',
+	-- 	requires = {
+	-- 		'nvim-treesitter/nvim-treesitter'
+	-- 	}
+	-- }
 	--
 	-- convenient search result hopping 
 	use 'kevinhwang91/nvim-hlslens'
