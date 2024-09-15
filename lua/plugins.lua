@@ -139,6 +139,7 @@ return require('packer').startup(function(use)
 	use 'leoluz/nvim-dap-go'
 
 	-- LSP support for vim configs
+	-- TODO: switch to https://github.com/folke/lazydev.nvim
 	use "folke/neodev.nvim"
 
 	-- comment lines/blocks
