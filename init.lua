@@ -31,7 +31,6 @@ require 'ui.telescope'
 require 'ui.windows'
 require 'ui.dap-ui'
 require 'ui.blame-line'
--- remaps
+
 require 'remaps.leader'
 require 'remaps.personal'
-require 'remaps.neotest'
