@@ -2,13 +2,13 @@
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 -- If you want icons for diagnostic errors, you'll need to define them somewhere:
 vim.fn.sign_define("DiagnosticSignError",
-{text = " ", texthl = "DiagnosticSignError"})
+	{ text = " ", texthl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn",
-{text = " ", texthl = "DiagnosticSignWarn"})
+	{ text = " ", texthl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo",
-{text = " ", texthl = "DiagnosticSignInfo"})
+	{ text = " ", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint",
-{text = "", texthl = "DiagnosticSignHint"})
+	{ text = "", texthl = "DiagnosticSignHint" })
 -- NOTE: this is changed from v1.x, which used the old style of highlight groups
 -- in the form "LspDiagnosticsSignWarning"
 
@@ -18,7 +18,7 @@ require("neo-tree").setup({
 	enable_git_status = true,
 	enable_diagnostics = true,
 	sort_case_insensitive = false, -- used when sorting files and directories in the tree
-	sort_function = nil , -- use a custom function for sorting files and directories in the tree 
+	sort_function = nil,        -- use a custom function for sorting files and directories in the tree
 	default_component_configs = {
 		container = {
 			enable_character_fade = true
@@ -60,8 +60,8 @@ require("neo-tree").setup({
 				-- Change type
 				added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
 				modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-				deleted   = "✖",-- this can only be used in the git_status source
-				renamed   = "",-- this can only be used in the git_status source
+				deleted   = "✖", -- this can only be used in the git_status source
+				renamed   = "", -- this can only be used in the git_status source
 				-- Status type
 				untracked = "",
 				ignored   = "",
@@ -79,9 +79,9 @@ require("neo-tree").setup({
 			nowait = true,
 		},
 		mappings = {
-			["<space>"] = { 
-				"toggle_node", 
-				nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use 
+			["<space>"] = {
+				"toggle_node",
+				nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
 			},
 			["<2-LeftMouse>"] = "open",
 			["<cr>"] = "open",
@@ -99,7 +99,7 @@ require("neo-tree").setup({
 			["C"] = "close_node",
 			["z"] = "close_all_nodes",
 			--["Z"] = "expand_all_nodes",
-			["a"] = { 
+			["a"] = {
 				"add",
 				-- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
 				-- some commands may take optional config options, see `:h neo-tree-mappings` for details
@@ -115,34 +115,41 @@ require("neo-tree").setup({
 			["p"] = "paste_from_clipboard",
 			["c"] = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
 			-- ["c"] = {
-				--  "copy",
-				--  config = {
-					--    show_path = "none" -- "none", "relative", "absolute"
-					--  }
-					--}
-					["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
-					["q"] = "close_window",
-					["R"] = "refresh",
-					["?"] = "show_help",
-					["<"] = "prev_source",
-					[">"] = "next_source",
-				}
+			--  "copy",
+			--  config = {
+			--    show_path = "none" -- "none", "relative", "absolute"
+			--  }
+			--}
+			["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
+			["q"] = "close_window",
+			["R"] = "refresh",
+			["?"] = "show_help",
+			["<"] = "prev_source",
+			[">"] = "next_source",
+		}
+	},
+	filesystem = {
+		filtered_items = {
+			visible = false,
+			hide_dotfiles = false,
+			hide_gitignored = false,
+			always_show = {
+				".gitignore"
 			},
-			filesystem = {
-				filtered_items = {
-					visible = false,
-					hide_dotfiles = false,
-					hide_gitignored = false,
-					always_show = {
-						".gitignore"
-					},
-					never_show = {
-						".DS_Store"
-					}
-				},
-				follow_current_file = true,
-				group_empty_dirs = false,
-				hijack_netrw_behavior = "disabled", -- left alone netrw. Useful when accessing via scp://
-				use_libuv_file_watcher = true, -- rely on OS file watcher to not update manually
+			never_show = {
+				".DS_Store"
 			}
-		})
+		},
+		follow_current_file = true,
+		group_empty_dirs = false,
+		hijack_netrw_behavior = "disabled", -- left alone netrw. Useful when accessing via scp://
+		use_libuv_file_watcher = true,  -- rely on OS file watcher to not update manually
+	}
+})
+
+local wk = require("which-key")
+
+wk.add({
+	{"nt", "<CMD>Neotree toggle<CR>", desc="Show file tree (Neotree)"}
+})
+
