@@ -83,10 +83,6 @@ return require('packer').startup(function(use)
 
 	use 'hiphish/rainbow-delimiters.nvim'
 
-	--
-	-- convenient search result hopping 
-	use 'kevinhwang91/nvim-hlslens'
-
 	-- Lua
 
 	-- harpoon used to mark and switch between files (bookmarks)
