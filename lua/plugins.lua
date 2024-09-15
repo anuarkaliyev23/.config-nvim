@@ -112,9 +112,6 @@ return require('packer').startup(function(use)
 	-- move blocks vertically
 	use 'fedepujol/move.nvim'
 
-	-- align markdown table
-	use 'junegunn/vim-easy-align'
-
 	--
 	use {
 		'nvim-neotest/neotest',

@@ -1,6 +1,6 @@
 local lsp_config = require("lspconfig")
 local cmp = require("cmp")
-
+local wk = require("which-key")
 
 local enabled_servers = {
 	"gopls",
@@ -20,7 +20,7 @@ local enabled_servers = {
 lsp_config.lua_ls.setup {
 	on_init = function(client)
 		local path = client.workspace_folders[1].name
-		if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
+		if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
 			return
 		end
 
@@ -61,7 +61,7 @@ lsp_config.lua_ls.setup {
 	}
 }
 
-lsp_config.pylsp.setup{
+lsp_config.pylsp.setup {
 	pylsp = {
 		plugins = {
 			rope_autoimport = {
@@ -111,17 +111,6 @@ cmp.setup({
 	})
 })
 
--- To use git you need to install the plugin petertriho/cmp-git and uncomment lines below
--- Set configuration for specific filetype.
---[[ cmp.setup.filetype('gitcommit', {
-	sources = cmp.config.sources({
-		{ name = 'git' },
-	}, {
-		{ name = 'buffer' },
-	})
-})
-require("cmp_git").setup() ]]-- 
-
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
 	mapping = cmp.mapping.preset.cmdline(),
@@ -143,10 +132,22 @@ cmp.setup.cmdline(':', {
 
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
---
 for _, enabled_lsp_server in pairs(enabled_servers) do
 	lsp_config[enabled_lsp_server].setup {
 		capabilities = capabilities
 	}
 end
+
+
+wk.add({
+	{ "K",    vim.lsp.buf.hover,           desc = "Hover (LSP)" },
+	{ "gd",   vim.lsp.buf.definition,      desc = "Go to definition (LSP)" },
+	{ "gD",   vim.lsp.buf.declaration,     desc = "Go to declaration (LSP)" },
+	{ "gi",   vim.lsp.buf.implementation,  desc = "Go to implementations (LSP)" },
+	{ "go",   vim.lsp.buf.type_definition, desc = "Go to type definition (LSP)" },
+	{ "gr",   vim.lsp.buf.references,      desc = "Go to references (LSP)" },
+	{ "gs",   vim.lsp.buf.signature_help,  desc = "Go to function signature (LSP)" },
+	{ "<F2>", vim.lsp.buf.rename,          desc = "Rename (LSP)" },
+	{ "<F3>", vim.lsp.buf.format,          desc = "Format file (LSP)",             mode = { "n", "x" } },
+	{ "<F4>", vim.lsp.buf.code_action,     desc = "Show code actions (LSP)" },
+})
