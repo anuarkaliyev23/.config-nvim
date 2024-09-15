@@ -34,6 +34,5 @@ require 'ui.blame-line'
 -- remaps
 require 'remaps.leader'
 require 'remaps.neotree'
-require 'remaps.move'
 require 'remaps.personal'
 require 'remaps.neotest'
