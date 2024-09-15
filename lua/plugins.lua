@@ -159,12 +159,14 @@ return require('packer').startup(function(use)
 	use 'mikelue/vim-maven-plugin'
 	use 'ggandor/leap.nvim'
 	--
-		-- Stop switching to English to move
+	-- Stop switching to English to move
 	use 'ivanesmantovich/xkbswitch.nvim'
 
 	use {'akinsho/git-conflict.nvim', tag = "*"}
 
 	use 'braxtons12/blame_line.nvim'
+
+	use 'folke/which-key.nvim'
 
 end)
 
