@@ -27,6 +27,7 @@ require 'config.xksbswitch'
 require 'config.git-conflict'
 require 'config.harpoon'
 require 'config.move'
+require 'config.rainbow-delimiter'
 -- remaps
 require 'remaps.leader'
 require 'remaps.lsp'
