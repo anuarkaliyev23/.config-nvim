@@ -44,6 +44,4 @@ require 'remaps.personal'
 require 'remaps.neotest'
 require 'remaps.vim-easy-align'
 require 'remaps.nvim-code-action-menu'
-require 'remaps.git-conflict'
 require 'remaps.lsp-signature'
-
