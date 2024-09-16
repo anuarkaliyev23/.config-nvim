@@ -11,7 +11,6 @@ require 'code.testing.neotest'
 require 'code.debug.nvim-dap' -- should be after lsp
 
 require 'general.plugins.packer'
-require 'general.plugins.neodev' -- should be before lsp-zero!
 require 'general.indents'
 require 'general.movement.leap'
 require 'general.movement.xksbswitch'

@@ -19,11 +19,6 @@ neotest.setup({
 })
 
 
-require("neodev").setup({
-	library = { plugins = { "neotest" }, types = true },
-})
-
-
 
 wk.add({
 	{ "<leader>tr", neotest.run.run,                                    desc = "Run test",                  mode = "n" },
