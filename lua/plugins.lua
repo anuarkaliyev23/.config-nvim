@@ -7,7 +7,7 @@ return require('packer').startup(function(use)
 
 	-- LSP
 	use "neovim/nvim-lspconfig"
-	use {"hrsh7th/nvim-cmp",
+	use { "hrsh7th/nvim-cmp",
 		requires = {
 			{ 'hrsh7th/cmp-nvim-lsp' },
 			{ 'hrsh7th/cmp-buffer' },
@@ -71,7 +71,7 @@ return require('packer').startup(function(use)
 			'nvim-telescope/telescope-ui-select.nvim',
 			'nvim-telescope/telescope-symbols.nvim',
 		},
-		run="make"
+		run = "make"
 	}
 
 	--
@@ -88,7 +88,7 @@ return require('packer').startup(function(use)
 	-- harpoon used to mark and switch between files (bookmarks)
 	use {
 		'ThePrimeagen/harpoon',
-		branch="harpoon2",
+		branch = "harpoon2",
 		requres = 'nvim-lua/plenary.nvim',
 	}
 	--
@@ -154,12 +154,9 @@ return require('packer').startup(function(use)
 	-- Stop switching to English to move
 	use 'ivanesmantovich/xkbswitch.nvim'
 
-	use {'akinsho/git-conflict.nvim', tag = "*"}
+	use { 'akinsho/git-conflict.nvim', tag = "*" }
 
 	use 'braxtons12/blame_line.nvim'
 
 	use 'folke/which-key.nvim'
-
 end)
-
-
