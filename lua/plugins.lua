@@ -159,4 +159,5 @@ return require('packer').startup(function(use)
 	use 'braxtons12/blame_line.nvim'
 
 	use 'folke/which-key.nvim'
+	use 'folke/trouble.nvim'
 end)
