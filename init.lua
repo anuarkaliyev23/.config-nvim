@@ -10,6 +10,7 @@ require 'code.manipulation.git-conflict'
 require 'code.testing.neotest'
 require 'code.debug.nvim-dap' -- should be after lsp
 require 'code.diagnostic.diagnostic'
+require 'code.diagnostic.trouble'
 
 require 'general.plugins.packer'
 require 'general.indents'

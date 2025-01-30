@@ -13,7 +13,8 @@ local enabled_servers = {
 	"dockerls",
 	"yamlls",
 	"sqlls",
-	"jedi_language_server"
+	"jedi_language_server",
+	"marksman"
 }
 -- LSP configuration
 
@@ -73,6 +74,8 @@ lsp_config.pylsp.setup {
 		}
 	}
 }
+
+lsp_config.marksman.setup {}
 
 
 -- CMP configuration
