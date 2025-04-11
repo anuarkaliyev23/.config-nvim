@@ -6,7 +6,6 @@ local enabled_servers = {
 	"gopls",
 	"golangci_lint_ls",
 	"ruff",
-	"ruff_lsp",
 	"jdtls",
 	"lua_ls",
 	"pyright",

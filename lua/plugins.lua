@@ -160,4 +160,5 @@ return require('packer').startup(function(use)
 
 	use 'folke/which-key.nvim'
 	use 'folke/trouble.nvim'
+	use { "ellisonleao/dotenv.nvim" }
 end)

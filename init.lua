@@ -19,6 +19,7 @@ require 'general.movement.xksbswitch'
 require 'general.movement.move'
 require 'general.bookmarking.harpoon'
 require 'general.clipboard'
+require 'general.env'
 
 require 'ui.catppuccin'
 require 'ui.line-numbers'
