@@ -69,6 +69,11 @@ lsp_config.pylsp.setup {
 			},
 			rope_completion = {
 				enabled = true,
+			},
+			black = {
+				enabled = true,
+				line_length = 79,
+				cache_config = false
 			}
 		}
 	}
