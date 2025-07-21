@@ -12,7 +12,6 @@ local enabled_servers = {
 	"dockerls",
 	"yamlls",
 	"sqlls",
-	"jedi_language_server",
 	"marksman"
 }
 -- LSP configuration
@@ -62,18 +61,24 @@ lsp_config.lua_ls.setup {
 }
 
 lsp_config.pylsp.setup {
-	pylsp = {
-		plugins = {
-			rope_autoimport = {
-				enabled = true,
-			},
-			rope_completion = {
-				enabled = true,
-			},
-			black = {
-				enabled = true,
-				line_length = 79,
-				cache_config = false
+	settings = {
+		pylsp = {
+			plugins = {
+				rope_autoimport = {
+					enabled = true,
+				},
+				rope_completion = {
+					enabled = true,
+				},
+				black = {
+					enabled = true,
+					line_length = 79,
+					cache_config = false
+				},
+				ruff = {
+					enabled = true,
+					format_enabled = false
+				}
 			}
 		}
 	}
@@ -145,6 +150,19 @@ for _, enabled_lsp_server in pairs(enabled_servers) do
 	}
 end
 
+local blackForPythonOrDefault = function()
+	if vim.bo.filetype == "python" then
+		vim.lsp.buf.format({
+			filter = function(client)
+				return client.name == "pylsp"
+			end,
+			async = true,
+		})
+	else
+		vim.lsp.buf.format({ async = true })
+	end
+end
+
 
 wk.add({
 	{ "K",    vim.lsp.buf.hover,           desc = "Hover (LSP)" },
@@ -155,6 +173,6 @@ wk.add({
 	{ "gr",   vim.lsp.buf.references,      desc = "Go to references (LSP)" },
 	{ "gs",   vim.lsp.buf.signature_help,  desc = "Go to function signature (LSP)" },
 	{ "<F2>", vim.lsp.buf.rename,          desc = "Rename (LSP)" },
-	{ "<F3>", vim.lsp.buf.format,          desc = "Format file (LSP)",             mode = { "n", "x" } },
+	{ "<F3>", blackForPythonOrDefault,     desc = "Format file (LSP)",             mode = { "n", "x" } },
 	{ "<F4>", vim.lsp.buf.code_action,     desc = "Show code actions (LSP)" },
 })

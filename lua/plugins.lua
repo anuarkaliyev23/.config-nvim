@@ -140,7 +140,23 @@ return require('packer').startup(function(use)
 	use 'mfussenegger/nvim-jdtls'
 	--
 
-	use 'chaoren/vim-wordmotion';
+	use {
+		'chaoren/vim-wordmotion',
+		config = function()
+			-- Disable wordmotion in Claude Code buffers to prevent lag
+			vim.api.nvim_create_autocmd('BufEnter', {
+				pattern = '*',
+				callback = function()
+					local bufname = vim.api.nvim_buf_get_name(0)
+					if string.match(bufname, 'claude') or vim.bo.filetype == 'claude' then
+						vim.b.wordmotion_disable = 1
+					else
+						vim.b.wordmotion_disable = 0
+					end
+				end
+			})
+		end
+	}
 
 	--
 	use {
@@ -161,4 +177,5 @@ return require('packer').startup(function(use)
 	use 'folke/which-key.nvim'
 	use 'folke/trouble.nvim'
 	use { "ellisonleao/dotenv.nvim" }
+
 end)
