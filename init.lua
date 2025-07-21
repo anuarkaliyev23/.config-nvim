@@ -11,6 +11,7 @@ require 'code.testing.neotest'
 require 'code.debug.nvim-dap' -- should be after lsp
 require 'code.diagnostic.diagnostic'
 require 'code.diagnostic.trouble'
+require 'code.agent.claude'
 
 require 'general.plugins.packer'
 require 'general.indents'
@@ -36,3 +37,4 @@ require 'ui.blame-line'
 
 require 'remaps.leader'
 require 'remaps.personal'
+

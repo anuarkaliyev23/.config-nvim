@@ -177,5 +177,10 @@ return require('packer').startup(function(use)
 	use 'folke/which-key.nvim'
 	use 'folke/trouble.nvim'
 	use { "ellisonleao/dotenv.nvim" }
-
+	use {
+	  'greggh/claude-code.nvim',
+	  requires = {
+		'nvim-lua/plenary.nvim', -- Required for git operations
+	  }
+	}
 end)
