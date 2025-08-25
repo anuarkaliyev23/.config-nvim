@@ -7,6 +7,7 @@ M.setup({
 		enter_insert = false,
 	}
 })
-wk.add{
-	{ "<leader>cc",    "<cmd>ClaudeCode<CR>",           desc = "Toggle claude code" },
+wk.add {
+	{ "<leader>cc", "<cmd>ClaudeCode<CR>",       desc = "Toggle claude code" },
+	{ "<leader>cr", "<cmd>ClaudeCodeResume<CR>", desc = "Resume Claude Code Session" },
 }
