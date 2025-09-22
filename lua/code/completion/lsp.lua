@@ -5,10 +5,8 @@ local wk = require("which-key")
 local enabled_servers = {
 	"gopls",
 	-- "golangci_lint_ls",
-	"ruff",
 	"jdtls",
 	"lua_ls",
-	"pyright",
 	"dockerls",
 	"yamlls",
 	"sqlls",
