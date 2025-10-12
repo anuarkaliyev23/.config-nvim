@@ -1,6 +1,7 @@
 local lsp_config = require("lspconfig")
 local cmp = require("cmp")
 local wk = require("which-key")
+local null_ls = require("null-ls")
 
 local enabled_servers = {
 	"gopls",
@@ -11,7 +12,9 @@ local enabled_servers = {
 	"yamlls",
 	"sqlls",
 	"marksman",
-	"pylsp"
+	-- "pylsp"
+	"pyright",   -- replaced pylsp
+  	"ruff",  -- Ruff for linting/code actions
 }
 -- LSP configuration
 
@@ -59,128 +62,153 @@ lsp_config.lua_ls.setup {
 	}
 }
 
-lsp_config.pylsp.setup {
-	capabilities = require('cmp_nvim_lsp').default_capabilities(),
-	settings = {
-		pylsp = {
-			plugins = {
-				-- Formatting
-				black = {
-					enabled = true,
-					line_length = 79,
-					cache_config = false
-				},
-				-- Linting
-				ruff = {
-					enabled = true,
-					format_enabled = false,
-					lineLength = 79,
-					preview = true,
-					unsafeFixes = true,
-					select = {
-						"E", -- pycodestyle errors
-						"F", -- Pyflakes
-						"W", -- pycodestyle warnings
-						"C90", -- mccabe complexity
-						"I", -- isort
-						"N", -- pep8-naming
-						"UP", -- pyupgrade
-						"YTT", -- flake8-2020
-						"ANN", -- flake8-annotations
-						"S", -- bandit
-						"BLE", -- flake8-blind-except
-						"FBT", -- flake8-boolean-trap
-						"B", -- flake8-bugbear
-						"A", -- flake8-builtins
-						"COM", -- flake8-commas
-						"C4", -- flake8-comprehensions
-						"DTZ", -- flake8-datetimez
-						"T10", -- flake8-debugger
-						"DJ", -- flake8-django
-						"EM", -- flake8-errmsg
-						"EXE", -- flake8-executable
-						"ISC", -- flake8-implicit-str-concat
-						"ICN", -- flake8-import-conventions
-						"G", -- flake8-logging-format
-						"INP", -- flake8-no-pep420
-						"PIE", -- flake8-pie
-						"T20", -- flake8-print
-						"PYI", -- flake8-pyi
-						"PT", -- flake8-pytest-style
-						"Q", -- flake8-quotes
-						"RSE", -- flake8-raise
-						"RET", -- flake8-return
-						"SLF", -- flake8-self
-						"SIM", -- flake8-simplify
-						"TID", -- flake8-tidy-imports
-						"TCH", -- flake8-type-checking
-						"INT", -- flake8-gettext
-						"ARG", -- flake8-unused-arguments
-						"PTH", -- flake8-use-pathlib
-						"TD", -- flake8-todos
-						"FIX", -- flake8-fixme
-						"ERA", -- eradicate
-						"PD", -- pandas-vet
-						"PGH", -- pygrep-hooks
-						"PL", -- Pylint
-						"TRY", -- tryceratops
-						"FLY", -- flynt
-						"NPY", -- NumPy-specific rules
-						"AIR", -- Airflow
-						"PERF", -- Perflint
-						"FURB", -- refurb
-						"LOG", -- flake8-logging
-						"RUF", -- Ruff-specific rules
-					}
-				},
-				pycodestyle = {
-					enabled = false
-				},
-				-- Code completion and imports
-				rope_autoimport = {
-					enabled = true,
-					memory = true
-				},
-				rope_completion = {
-					enabled = true,
-					eager = true
-				},
-				jedi_completion = {
-					enabled = true,
-					fuzzy = true,
-					eager = true,
-					include_params = true
-				},
-				jedi_definition = {
-					enabled = true,
-					follow_imports = true,
-					follow_builtin_imports = true
-				},
-				jedi_hover = {
-					enabled = true
-				},
-				jedi_references = {
-					enabled = true
-				},
-				jedi_signature_help = {
-					enabled = true
-				},
-				jedi_symbols = {
-					enabled = true,
-					all_scopes = true
-				},
-				-- Code actions and refactoring
-				rope = {
-					enabled = true
-				},
-				-- Workspace symbol search
-				pylsp_mypy = {
-					enabled = false
-				}
-			}
-		}
-	}
+
+lsp_config.ruff_lsp.setup {
+  init_options = {
+    settings = {
+      args = { "--unsafe-fixes", "--preview" }, -- optional, tweak as needed
+    },
+  },
+  on_attach = function(client, _)
+    client.server_capabilities.hoverProvider = false
+    client.server_capabilities.definitionProvider = false
+  end,
 }
+
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.black.with({
+      extra_args = { "--line-length", "79" }
+    }),
+  },
+})
+
+-- lsp_config.pylsp.setup {
+-- 	capabilities = require('cmp_nvim_lsp').default_capabilities(),
+-- 	settings = {
+-- 		pylsp = {
+-- 			plugins = {
+-- 				-- Formatting
+-- 				black = {
+-- 					enabled = true,
+-- 					line_length = 79,
+-- 					cache_config = false
+-- 				},
+-- 				-- Linting
+-- 				ruff = {
+-- 					enabled = true,
+-- 					format_enabled = false,
+-- 					lineLength = 79,
+-- 					preview = true,
+-- 					unsafeFixes = true,
+-- 					select = {
+-- 						"E", -- pycodestyle errors
+-- 						"F", -- Pyflakes
+-- 						"W", -- pycodestyle warnings
+-- 						"C90", -- mccabe complexity
+-- 						"I", -- isort
+-- 						"N", -- pep8-naming
+-- 						"UP", -- pyupgrade
+-- 						"YTT", -- flake8-2020
+-- 						"ANN", -- flake8-annotations
+-- 						"S", -- bandit
+-- 						"BLE", -- flake8-blind-except
+-- 						"FBT", -- flake8-boolean-trap
+-- 						"B", -- flake8-bugbear
+-- 						"A", -- flake8-builtins
+-- 						"COM", -- flake8-commas
+-- 						"C4", -- flake8-comprehensions
+-- 						"DTZ", -- flake8-datetimez
+-- 						"T10", -- flake8-debugger
+-- 						"DJ", -- flake8-django
+-- 						"EM", -- flake8-errmsg
+-- 						"EXE", -- flake8-executable
+-- 						"ISC", -- flake8-implicit-str-concat
+-- 						"ICN", -- flake8-import-conventions
+-- 						"G", -- flake8-logging-format
+-- 						"INP", -- flake8-no-pep420
+-- 						"PIE", -- flake8-pie
+-- 						"T20", -- flake8-print
+-- 						"PYI", -- flake8-pyi
+-- 						"PT", -- flake8-pytest-style
+-- 						"Q", -- flake8-quotes
+-- 						"RSE", -- flake8-raise
+-- 						"RET", -- flake8-return
+-- 						"SLF", -- flake8-self
+-- 						"SIM", -- flake8-simplify
+-- 						"TID", -- flake8-tidy-imports
+-- 						"TCH", -- flake8-type-checking
+-- 						"INT", -- flake8-gettext
+-- 						"ARG", -- flake8-unused-arguments
+-- 						"PTH", -- flake8-use-pathlib
+-- 						"TD", -- flake8-todos
+-- 						"FIX", -- flake8-fixme
+-- 						"ERA", -- eradicate
+-- 						"PD", -- pandas-vet
+-- 						"PGH", -- pygrep-hooks
+-- 						"PL", -- Pylint
+-- 						"TRY", -- tryceratops
+-- 						"FLY", -- flynt
+-- 						"NPY", -- NumPy-specific rules
+-- 						"AIR", -- Airflow
+-- 						"PERF", -- Perflint
+-- 						"FURB", -- refurb
+-- 						"LOG", -- flake8-logging
+-- 						"RUF", -- Ruff-specific rules
+-- 					}
+-- 				},
+-- 				pycodestyle = {
+-- 					enabled = false
+-- 				},
+-- 				-- Code completion and imports
+-- 				-- rope_autoimport = {
+-- 				-- 	enabled = true,
+-- 				-- 	memory = true,
+-- 				-- 	code_actions = true,
+-- 				-- 	enabled_scopes = { "global", "module" }
+-- 				-- },
+-- 				-- rope_completion = {
+-- 				-- 	enabled = true,
+-- 				-- 	eager = false
+-- 				-- },
+-- 				jedi_completion = {
+-- 					enabled = true,
+-- 					fuzzy = true,
+-- 					eager = true,
+-- 					include_params = true,
+-- 					include_imports = true,
+-- 					include_class_objects = true
+-- 				},
+-- 				jedi_definition = {
+-- 					enabled = true,
+-- 					follow_imports = true,
+-- 					follow_builtin_imports = true
+-- 				},
+-- 				jedi_hover = {
+-- 					enabled = true
+-- 				},
+-- 				jedi_references = {
+-- 					enabled = true
+-- 				},
+-- 				jedi_signature_help = {
+-- 					enabled = true
+-- 				},
+-- 				jedi_symbols = {
+-- 					enabled = true,
+-- 					all_scopes = true
+-- 				},
+-- 				-- Code actions and refactoring
+-- 				-- rope = {
+-- 				-- 	enabled = true
+-- 				-- },
+-- 				-- Workspace symbol search
+-- 				pylsp_mypy = {
+-- 					enabled = false
+-- 				}
+-- 			}
+-- 		}
+-- 	}
+-- }
 
 lsp_config.marksman.setup {}
 

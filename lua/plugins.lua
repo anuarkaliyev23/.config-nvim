@@ -178,9 +178,16 @@ return require('packer').startup(function(use)
 	use 'folke/trouble.nvim'
 	use { "ellisonleao/dotenv.nvim" }
 	use {
-	  'greggh/claude-code.nvim',
-	  requires = {
-		'nvim-lua/plenary.nvim', -- Required for git operations
-	  }
+		'greggh/claude-code.nvim',
+		requires = {
+			'nvim-lua/plenary.nvim', -- Required for git operations
+		}
+	}
+
+	use {
+		'nvimtools/none-ls.nvim',
+		requires = {
+			'nvim-lua/plenary.nvim', -- Required for git operations
+		}
 	}
 end)
