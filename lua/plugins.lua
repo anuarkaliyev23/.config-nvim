@@ -76,7 +76,7 @@ return require('packer').startup(function(use)
 
 	--
 	-- treesitter
-	use 'nvim-treesitter/nvim-treesitter'
+	use { 'nvim-treesitter/nvim-treesitter', branch = 'master' }
 	use 'nvim-treesitter/playground'
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
 	--
@@ -177,12 +177,6 @@ return require('packer').startup(function(use)
 	use 'folke/which-key.nvim'
 	use 'folke/trouble.nvim'
 	use { "ellisonleao/dotenv.nvim" }
-	use {
-		'greggh/claude-code.nvim',
-		requires = {
-			'nvim-lua/plenary.nvim', -- Required for git operations
-		}
-	}
 
 	use {
 		'nvimtools/none-ls.nvim',
