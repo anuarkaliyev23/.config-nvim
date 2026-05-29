@@ -165,7 +165,7 @@ return require('packer').startup(function(use)
 	}
 	--
 	use 'mikelue/vim-maven-plugin'
-	use 'ggandor/leap.nvim'
+	use 'https://codeberg.org/andyg/leap.nvim'
 	--
 	-- Stop switching to English to move
 	use 'ivanesmantovich/xkbswitch.nvim'

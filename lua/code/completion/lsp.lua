@@ -1,4 +1,4 @@
-local lsp_config = require("lspconfig")
+
 local cmp = require("cmp")
 local wk = require("which-key")
 local null_ls = require("null-ls")
@@ -18,62 +18,7 @@ local enabled_servers = {
 }
 -- LSP configuration
 
-lsp_config.lua_ls.setup {
-	on_init = function(client)
-		local path = client.workspace_folders[1].name
-		if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
-			return
-		end
 
-		client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-			runtime = {
-				-- Tell the language server which version of Lua you're using
-				-- (most likely LuaJIT in the case of Neovim)
-				version = 'LuaJIT'
-			},
-			-- Make the server aware of Neovim runtime files
-			workspace = {
-				checkThirdParty = false,
-				library = {
-					vim.env.VIMRUNTIME
-					-- Depending on the usage, you might want to add additional paths here.
-					-- "${3rd}/luv/library"
-					-- "${3rd}/busted/library",
-				}
-				-- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-				-- library = vim.api.nvim_get_runtime_file("", true)
-			}
-		})
-	end,
-
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { 'vim', 'hs' }
-			},
-			workspace = {
-				library = {
-					['/Applications/Hammerspoon.app/Contents/Resources/extensions/hs'] = true,
-					['/Users/dusaliyev/.hammerspoon/Spoons/EmmyLua.spoon/annotations'] = true,
-				},
-				checkThirdParty = false,
-			},
-		},
-	}
-}
-
-
-lsp_config.ruff_lsp.setup {
-  init_options = {
-    settings = {
-      args = { "--unsafe-fixes", "--preview" }, -- optional, tweak as needed
-    },
-  },
-  on_attach = function(client, _)
-    client.server_capabilities.hoverProvider = false
-    client.server_capabilities.definitionProvider = false
-  end,
-}
 
 null_ls.setup({
   sources = {
@@ -210,8 +155,6 @@ null_ls.setup({
 -- 	}
 -- }
 
-lsp_config.marksman.setup {}
-
 
 -- CMP configuration
 cmp.setup({
@@ -270,10 +213,67 @@ cmp.setup.cmdline(':', {
 
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-for _, enabled_lsp_server in pairs(enabled_servers) do
-	lsp_config[enabled_lsp_server].setup {
-		capabilities = capabilities
+
+-- Setup Lua LS custom config natively
+vim.lsp.config('lua_ls', {
+	capabilities = capabilities,
+	on_init = function(client)
+		local path = client.workspace_folders[1].name
+		if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
+			return
+		end
+
+		client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+			runtime = {
+				version = 'LuaJIT'
+			},
+			workspace = {
+				checkThirdParty = false,
+				library = {
+					vim.env.VIMRUNTIME
+				}
+			}
+		})
+	end,
+
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { 'vim', 'hs' }
+			},
+			workspace = {
+				library = {
+					['/Applications/Hammerspoon.app/Contents/Resources/extensions/hs'] = true,
+					['/Users/dusaliyev/.hammerspoon/Spoons/EmmyLua.spoon/annotations'] = true,
+				},
+				checkThirdParty = false,
+			},
+		},
 	}
+})
+
+-- Setup Ruff custom config natively
+vim.lsp.config('ruff', {
+	capabilities = capabilities,
+	init_options = {
+		settings = {
+			args = { "--unsafe-fixes", "--preview" },
+		},
+	},
+	on_attach = function(client, _)
+		client.server_capabilities.hoverProvider = false
+		client.server_capabilities.definitionProvider = false
+	end,
+})
+
+-- Configure other servers and enable all
+for _, enabled_lsp_server in pairs(enabled_servers) do
+	if enabled_lsp_server ~= "lua_ls" and enabled_lsp_server ~= "ruff" then
+		vim.lsp.config(enabled_lsp_server, {
+			capabilities = capabilities
+		})
+	end
+	vim.lsp.enable(enabled_lsp_server)
 end
 
 -- local blackForPythonOrDefault = function()
