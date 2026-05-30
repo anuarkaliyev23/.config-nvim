@@ -175,6 +175,9 @@ return require('packer').startup(function(use)
 	use 'braxtons12/blame_line.nvim'
 
 	use 'folke/which-key.nvim'
+
+	-- HTTP Client
+	use 'mistweaverco/kulala.nvim'
 	use 'folke/trouble.nvim'
 	use { "ellisonleao/dotenv.nvim" }
 
